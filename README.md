@@ -11,9 +11,9 @@ This project, *The Value Gap*, investigates salary inefficiencies in the 2024–
 
 **DOI:** 
 
-**Press Release:** [View the Pressrelease ](link)
+**Press Release:** [View "The Value Gap" Press Release]([link](https://github.com/dqb5ee/project-2-dqb5ee/blob/main/pressrelease.md))
 
-**Data:** [OneDrive Folder](link)
+**Data:** [OneDrive Folder](https://myuva-my.sharepoint.com/:b:/g/personal/dqb5ee_virginia_edu/IQAeCwx7j_UlR7sSh6Bc4wUZAfx7X2BF973VGb6OXb_ep9I?e=c2EqMA)
 
 **Pipeline:** [Technical Pipeline & Execution Log](link)
 
