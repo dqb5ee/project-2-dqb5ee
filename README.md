@@ -1,7 +1,9 @@
-# DS 4320 Project 1: Finding the Arid Edge
-### Optimizing Live Fuel Moisture Thresholds for Southern California Wildfire Readiness
+# DS 4320 Project 2: The Value Gap
+### Using K-Means Clustering to Expose Salary Inefficiencies in the 2024–25 NBA Season
 
 **Executive Summary:** 
+
+This project, *The Value Gap*, investigates salary inefficiencies in the 2024–25 NBA season using k-means clustering applied to player performance data sourced from Basketball Reference. Two datasets — a player totals table and a salary table — were cleaned, merged, and loaded into MongoDB Atlas, then analyzed through a Python pipeline using scikit-learn and Plotly. Players are clustered into three performance tiers (High, Medium, Low) based on total points and assists, with salary overlaid to identify who is being paid fairly, who is underpaid, and who is overpaid relative to their output. The primary deliverable is an actionable shortlist of signing targets and players to avoid, framed for a non-technical front office audience through a press release and interactive visualization. Known limitations include a position bias toward ball-handlers, survivorship bias from injured players sitting out the full season, and the inherent uncertainty of using next-year contract value as a proxy for current player worth. Full methodology, metadata, and bias documentation are included in this repository.
 
 **Name:** Avalon Bennett
 
