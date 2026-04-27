@@ -25,16 +25,18 @@ Known limitations include a position bias toward ball-handlers, survivorship bia
 
 ## Problem Definition
 
-**General Problem:** Can player performance data reveal salary inefficiencies in professional sports?
+**General Problem:** Can we predict athletic performance value?
 
 **Refined Statement:** 
 
-Using 2024–2025 NBA season data, can we cluster on points (PTS) and assists (AST) to identify which players are statistically underpaid relative to their performance tier, and which should be avoided due to high salary and low output?
+Using 2024–25 NBA season data, can we use k-means clustering on points (PTS) and assists (AST) to identify which players are statistically underpaid relative to their performance tier, and which should be avoided due to high salary and low output?
 
 **Rationale for Refinement:** 
 
-The general problem of projecting athletic performance is extremely broad. It could apply to any sport through regression, time series forecasting, or any number of other techniques. The refinement to NBA salary inefficiency was chosen deliberately for two reasons. First, the NBA provides one of the cleanest datasets in professional sports because player statistics are meticulously tracked, publicly available, and directly paired with transparent contract data, making it possible to compare output and compensation without significant data engineering overhead. Second, the salary cap structure creates a concrete, real-world consequence for misvaluation that doesn't exist in other contexts, where overpaying one player directly limits what a team can spend on everyone else. Within that space, the further narrowing to k-means clustering on points and assists was chosen because unsupervised clustering shows patterns without imposing assumptions about what "good" looks like, and because points and assists are the two statistics most directly tied to winning possessions. The result is a focused,
-interpretable analysis that a non-technical front office can act on.
+**Rationale for Refinement:**
+
+The general problem of improving resource allocation under budget constraints applies across industries and could be approached through multiple techniques. The refinement to NBA salary inefficiency was chosen because first, professional sports is one of the few
+domains where performance and compensation are both fully public, making it possible to measure the gap between value delivered and value paid without estimation or proxy variables. Second, the NBA salary cap creates a hard constraint that makes misallocation costly in a way that most resource allocation problems don't, because overpaying one player is a trade-off against every other roster decision that season. Third, unsupervised clustering was chosen over regression because the goal is not to predict a salary from stats, but to discover whether natural performance tiers exist in the data and whether compensation aligns with those tiers, which is a different question requiring a different method. The result is an analysis that is both technically motivated and directly actionable for a non-technical audience.
 
 
 **Motivation:** 
@@ -130,19 +132,32 @@ The `2025-26` salary column was used rather than the current season's cap hit be
 
 ## Metadata
 
-**Implicit Schema:** 
+**Implicit Schema:**
 
 The merged dataset follows a flat, row-per-player structure where each
-record represents one NBA player's complete 2024–25 season. The implicit
-schema conventions are as follows:
+record represents one NBA player's complete 2024–25 season. The following
+conventions need to be followed when adding new records to this dataset:
 
-- One row per player: Multi-team rows are collapsed to a single totals row. No player appears more than once
-- Numeric performance fields (PTS, AST, TRB, etc.) store integer or float values representing season cumulative totals
-- Percentage fields (FG%, 3P%, FT%, eFG%) store float values between 0.0 and 1.0 (not 0–100)
-- Salary is stored as a float in US dollars (e.g., `48070014.0`), with `$` and `,` stripped during preprocessing
-- Categorical fields (Player, Pos, Tm, cluster) store strings
-- Missing values arise legitimately (e.g., a player with zero three-point attempts has no 3P%  and is stored as `NaN`, not zero) and should not be imputed without domain justification
-- The `cluster` column is a derived field added during analysis (not present in the raw source files) and takes values `'High'`, `'Medium'`, or `'Low'`
+- **One row per player:** If a player appears on multiple teams, retain
+  only the season-total row. Do not add individual team rows. The `Tm`
+  field for these players must be `"2TM"` or `"3TM"`.
+- **Numeric performance fields** (`PTS`, `AST`, `TRB`, etc.) must store
+  integer or float values representing season cumulative totals — not
+  per-game averages.
+- **Percentage fields** (`FG%`, `3P%`, `FT%`, `eFG%`) must store floats
+  between 0.0 and 1.0. Do not store as percentages (e.g. use `0.519`,
+  not `51.9`).
+- **Salary** must be stored as a float in US dollars with `$` and `,`
+  stripped (e.g. `48070014.0`). If a player has no salary data, omit
+  the record entirely — do not insert a `0` or `null`.
+- **Missing percentage fields** (e.g. a player with zero three-point
+  attempts has no `3P%`) must be stored as `NaN`, not `0`. Imputing
+  zero would misrepresent the player's shooting profile.
+- **The `cluster` field** is derived and must only be added after the
+  k-means pipeline has been run. Valid values are `"High"`, `"Medium"`,
+  and `"Low"` only. Do not add this field manually.
+- **Do not add new fields** without updating the Data Dictionary and
+  Uncertainty Quantification tables in the README.
 
 
 **Data Summary:**
