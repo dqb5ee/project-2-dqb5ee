@@ -15,9 +15,9 @@ This project, *The Value Gap*, investigates salary inefficiencies in the 2024–
 
 **Data:** [OneDrive Folder](https://myuva-my.sharepoint.com/:b:/g/personal/dqb5ee_virginia_edu/IQAeCwx7j_UlR7sSh6Bc4wUZAfx7X2BF973VGb6OXb_ep9I?e=c2EqMA)
 
-**Pipeline:** [Technical Pipeline & Execution Log](link)
+**Pipeline:** [Technical Pipeline & Execution Log]([link](https://github.com/dqb5ee/project-2-dqb5ee/tree/main/pipeline))
 
-**License:** This project is licensed under the [MIT License.](link)
+**License:** This project is licensed under the [MIT License.]([link](https://github.com/dqb5ee/project-2-dqb5ee/blob/main/license.md))
 
 ## Problem Definition
 
