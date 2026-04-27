@@ -21,7 +21,7 @@ This project, *The Value Gap*, investigates salary inefficiencies in the 2024–
 
 ## Problem Definition
 
-**General Problem:** Can we project athlete performance and salary based on points and assists?
+**General Problem:** Can player performance data reveal salary inefficiencies in professional sports?
 
 **Refined Statement:** 
 
@@ -29,16 +29,17 @@ Using 2024–2025 NBA season data, can we cluster on points (PTS) and assists (A
 
 **Rationale for Refinement:** 
 
-The NBA salary cap creates a zero-sum environment: every dollar spent on an
-underperforming player is a dollar that cannot be used to sign someone better. Front offices often rely on reputation, draft pedigree, or prior-contracts when making signing decisions, rather than current performance data.
+The general problem of projecting athletic performance is extremely broad. It could apply to any sport through regression, time series forecasting, or any number of other techniques. The refinement to NBA salary inefficiency was chosen deliberately for two reasons. First, the NBA provides one of the cleanest datasets in professional sports because player statistics are meticulously tracked, publicly available, and directly paired with transparent contract data, making it possible to compare output and compensation without significant data engineering overhead. Second, the salary cap structure creates a concrete, real-world consequence for misvaluation that doesn't exist in other contexts, where overpaying one player directly limits what a team can spend on everyone else. Within that space, the further narrowing to k-means clustering on points and assists was chosen because unsupervised clustering shows patterns without imposing assumptions about what "good" looks like, and because points and assists are the two statistics most directly tied to winning possessions. The result is a focused,
+interpretable analysis that a non-technical front office can act on.
+
 
 **Motivation:** 
 
-This project is motivated by the belief that a data-driven, unsupervised clustering approach can cut through those biases and surface players whose market value is misaligned with their actual output. Identifying even one or two underpaid high-performers (or avoiding one costly low-performer) could meaningfully shift a team's competitive standing within the salary cap constraints of the 2024–2025 season.
+NBA front offices make important roster decisions every season, but compensation is mostly driven by a player's past reputation, their most recent contract negotiation, or simply how visible they are to casual fans, not by a rigorous assessment of their current output. This creates persistent market inefficiencies that go unaddressed until a player's next contract forces a correction. This project is motivated by the belief that a data-driven clustering approach can show those inefficiencies before the market catches up. The 2024–25 season is a particularly compelling case study because it includes a wide range of players on rookie-scale contracts producing at levels far above their pay grade, as well as veterans collecting max-level salaries on the back of reputations that their recent stats no longer support. Also, it is the most recent season with a full year of data. Identifying underpaid high-performers and staying away from costly low-performes could meaningfully shift a team's competitive outlook within the zero-sum constraints of the salary cap. The goal is not to replace basketball judgment, but to give decision-makers a cleaner approach to work with.
 
 **Press Release Headline:** The NBA's Best-Kept Secret: High Performers, Low Paychecks
 
-[**Press Release Link**](link)
+[**Press Release Link**](https://github.com/dqb5ee/project-2-dqb5ee/blob/main/pressrelease.md)
 
 
 ## Domain Exposition
@@ -82,7 +83,7 @@ The data for this project was sourced entirely from
 [Basketball Reference](https://www.basketball-reference.com), the most
 comprehensive publicly available repository of NBA statistics. Two separate
 tables were manually exported from the site for the 2024–25 season, the first being a `player totals table` containing cumulative season statistics (points,
-assists, rebounds, shooting percentages, games played, etc.) and the second was a `player salary table` containing each player's current and future contracted salary by season. Both tables were downloaded directly from Basketball Reference's export functionality, which let me copy a CSV-formatted output
+assists, rebounds, shooting percentages, games played, etc.) and the second was a `player salary table` containing each player's current and future contracted salary by season. Both tables were downloaded directly from Basketball Reference's export functionality, which let me copy a CSV-formatted output.
 
 Because Basketball Reference lists players who were traded midseason multiple times (once per team and once as a combined total) the totals rows which were flagged as `2TM` or `3TM` in the `Tm` column were retained and all individual team rows for those players were dropped during preprocessing, using a deduplication step that keeps only the first occurrence of each player name. The salary data was similarly deduplicated to one row per player before merging. The cleaned and merged dataset was then used directly in the clustering analysis without being loaded into a database yet, although the HW9 notebook demonstrates the same workflow applied through a MongoDB connection.
 
@@ -92,6 +93,9 @@ Because Basketball Reference lists players who were traded midseason multiple ti
 |:--|:--|:--|
 | `NBA_Totals_2425.csv` | Raw 2024-25 season cumulative player stats exported from Basketball Reference | [Link](https://github.com/dqb5ee/project-2-dqb5ee/blob/main/code/data_creation_code.py) |
 | `NBA_Salaries_2425.csv` | Player contract salary data for 2024-25 and future seasons from Basketball Reference | [Link](https://github.com/dqb5ee/project-2-dqb5ee/blob/main/code/data_creation_code.py) |
+
+> Both files are produced by a single data collection script.
+> See `data_creation_code.py` for the full export logic.
 
 **Bias Identification:** 
 
