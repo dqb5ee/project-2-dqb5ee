@@ -543,9 +543,8 @@ def run_visualization(df_analysis, risk_threshold):
 run_visualization(df_analysis, risk_threshold)
 ```
 
+<img width="1623" height="525" alt="newplot-3" src="https://github.com/user-attachments/assets/86c6b230-c010-4b55-a1ec-85c7911074a5" />
 
-    
-![png](pipeline_files/pipeline_12_0.png)
     
 
 
