@@ -376,13 +376,6 @@ except Exception as e:
 ```
 
 
-
-                        })                };                            </script>        </div>
-</body>
-</html>
-
-
-
 ```python
 from IPython.display import Image, display
 
@@ -391,8 +384,7 @@ display(Image(filename=image_path))
 ```
 
 
-    
-![png](pipeline_files/pipeline_14_0.png)
+<img width="1623" height="525" alt="newplot-3 7 43 00 PM" src="https://github.com/user-attachments/assets/09dd968a-bd17-4a7f-b6dc-176358e2140c" />
     
 
 
