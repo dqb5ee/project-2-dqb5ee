@@ -544,8 +544,8 @@ run_visualization(df_analysis, risk_threshold)
 ```
 
 
-    
-![png](pipeline_files/pipeline_12_0.png)
+<img width="1623" height="525" alt="newplot-3" src="https://github.com/user-attachments/assets/7fa124e3-b80a-462b-bf06-e4e753d58519" />
+
     
 
 
