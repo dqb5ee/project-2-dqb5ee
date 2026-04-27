@@ -93,6 +93,7 @@ Because Basketball Reference lists players who were traded midseason multiple ti
 |:--|:--|:--|
 | `NBA_Totals_2425.csv` | Raw 2024-25 season cumulative player stats exported from Basketball Reference | [Link](https://github.com/dqb5ee/project-2-dqb5ee/blob/main/code/data_creation_code.py) |
 | `NBA_Salaries_2425.csv` | Player contract salary data for 2024-25 and future seasons from Basketball Reference | [Link](https://github.com/dqb5ee/project-2-dqb5ee/blob/main/code/data_creation_code.py) |
+| `mongosh.js` | MongoDB shell script to verify collections, document counts, and preview data | [Link](https://github.com/dqb5ee/project-2-dqb5ee/blob/main/code/mongosh.js) |
 
 > Both files are produced by a single data collection script.
 > See `data_creation_code.py` for the full export logic.
