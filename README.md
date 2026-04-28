@@ -13,7 +13,7 @@ Known limitations include a position bias toward ball-handlers, survivorship bia
 
 **NetID:** dqb5ee
 
-**DOI:** 
+**DOI:** [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19836480.svg)](https://doi.org/10.5281/zenodo.19836480)
 
 **Press Release:** [View "The Value Gap" Press Release](https://github.com/dqb5ee/project-2-dqb5ee/blob/main/pressrelease.md)
 
@@ -25,13 +25,12 @@ Known limitations include a position bias toward ball-handlers, survivorship bia
 
 ## Problem Definition
 
-**General Problem:** Can we predict athletic performance value?
+**General Problem:** Can we determine athlete performance and salary based on points and assists?
 
 **Refined Statement:** 
 
 Using 2024–25 NBA season data, can we use k-means clustering on points (PTS) and assists (AST) to identify which players are statistically underpaid relative to their performance tier, and which should be avoided due to high salary and low output?
 
-**Rationale for Refinement:** 
 
 **Rationale for Refinement:**
 
@@ -41,7 +40,7 @@ domains where performance and compensation are both fully public, making it poss
 
 **Motivation:** 
 
-NBA front offices make important roster decisions every season, but compensation is mostly driven by a player's past reputation, their most recent contract negotiation, or simply how visible they are to casual fans, not by a rigorous assessment of their current output. This creates persistent market inefficiencies that go unaddressed until a player's next contract forces a correction. This project is motivated by the belief that a data-driven clustering approach can show those inefficiencies before the market catches up. The 2024–25 season is a particularly compelling case study because it includes a wide range of players on rookie-scale contracts producing at levels far above their pay grade, as well as veterans collecting max-level salaries on the back of reputations that their recent stats no longer support. Also, it is the most recent season with a full year of data. Identifying underpaid high-performers and staying away from costly low-performes could meaningfully shift a team's competitive outlook within the zero-sum constraints of the salary cap. The goal is not to replace basketball judgment, but to give decision-makers a cleaner approach to work with.
+NBA front offices make important roster decisions every season, but compensation is mostly driven by a player's past reputation, their most recent contract negotiation, or simply how visible they are to casual fans, not by a rigorous assessment of their current output. This creates persistent market inefficiencies that go unaddressed until a player's next contract forces a correction. This project is motivated by the belief that a data-driven clustering approach can show those inefficiencies before the market catches up. The 2024–25 season is a particularly compelling case study because it includes a wide range of players on rookie-scale contracts producing at levels far above their pay grade, as well as veterans collecting max-level salaries on the back of reputations that their recent stats no longer support. Also, it is the most recent season with a full year of data. Identifying underpaid high-performers and staying away from costly low-performers could meaningfully shift a team's competitive outlook within the zero-sum constraints of the salary cap. The goal is not to replace basketball judgment, but to give decision-makers a cleaner approach to work with.
 
 **Press Release Headline:** The NBA's Best-Kept Secret: High Performers, Low Paychecks
 
